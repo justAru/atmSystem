@@ -1,13 +1,16 @@
 package com.example.atmsystem;
 
+import com.example.atmsystem.model.Account;
 import com.example.atmsystem.model.Bank;
 import com.example.atmsystem.service.iATMService;
 import com.example.atmsystem.service.impl.ATMService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -15,11 +18,6 @@ public class AtmsystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtmsystemApplication.class, args);
-//		Scanner scanner = new Scanner(System.in);
-//
-//		ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
-//		System.out.println(context.getBean("bank", Bank.class).getAccounts());
-//		iATMService atm = new ATMService(context.getBean("bank", Bank.class));
 //
 //		while (true) {
 //
@@ -50,10 +48,13 @@ public class AtmsystemApplication {
 //			}
 //		}
 
-		ApplicationContext applicationContext= new ClassPathXmlApplicationContext("bean.xml");
-		applicationContext.getBean("bankServiceBean");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigurationFile.class);
 
-		((ClassPathXmlApplicationContext)applicationContext).close();
+		Account account = context.getBean("account", Account.class);
+		Bank bank = context.getBean("bank", Bank.class);
+
+		System.out.println(bank);
+		context.close();
 		}
 
 }
