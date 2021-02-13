@@ -15,6 +15,12 @@
         <property name="pin" value="5678"/>
     </bean>
 
+    <bean id="bankServiceBean" class="com.example.atmsystem.service.impl.ATMbeanService" init-method="init" destroy-method="destroy">
+        <property name="url" value="jdbc:postgresql://localhost:5432/atmsystem"></property>
+        <property name="password" value="admin"></property>
+        <property name="user" value="justaru"></property>
+    </bean>
+
     <bean id="bank" class="com.example.atmsystem.model.Bank">
         <property name="accounts">
             <list>
