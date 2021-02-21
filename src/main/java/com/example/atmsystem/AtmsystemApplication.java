@@ -3,7 +3,6 @@ package com.example.atmsystem;
 import com.example.atmsystem.model.Account;
 import com.example.atmsystem.model.Bank;
 import com.example.atmsystem.service.iATMService;
-import com.example.atmsystem.service.impl.ATMService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -48,13 +47,7 @@ public class AtmsystemApplication {
 //			}
 //		}
 
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigurationFile.class);
 
-		Account account = context.getBean("account", Account.class);
-		Bank bank = context.getBean("bank", Bank.class);
-
-		System.out.println(bank);
-		context.close();
 		}
 
 }
